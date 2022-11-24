@@ -1,13 +1,11 @@
 // index2.js
+const { nextISSTimesForMyLocation } = require('./iss_promised');
 
-const { fetchMyIP } = require('./iss_promised');
-const { fetchCoordsByIP } = require('./iss_promised');
-const { fetchISSFlyOverTimes } = require('./iss_promised');
+// see index.js for printPassTimes 
+// copy it from there, or better yet, moduralize and require it in both files
 
-
-
-// index2.js
-fetchMyIP()
-  .then(fetchCoordsByIP)
-  .then(fetchISSFlyOverTimes)
-  .then(body => console.log(body));
+// Call 
+nextISSTimesForMyLocation()
+  .then((passTimes) => {
+    printPassTimes(passTimes);
+  })
